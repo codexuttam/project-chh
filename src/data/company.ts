@@ -14,35 +14,62 @@ export const company = {
   border: "#E5EAF0"
 };
 
-export const stats = [
+// Business statistics shown in the animated counter section on the Home page.
+// Update `value` (a plain number) to change what the counters animate up to.
+export interface Stat {
+  value: number;
+  suffix?: string;
+  label: string;
+  description: string;
+}
+
+export const stats: Stat[] = [
   {
-    value: "XX+",
-    label: "Routes & Locations",
+    value: 50,
+    suffix: "+",
+    label: "Our Branches",
     description: "Extensive networks covering major industrial centers"
   },
   {
-    value: "XX+",
-    label: "Successful Deliveries",
+    value: 5500000,
+    label: "Work Done (In Ton)",
     description: "Cargo safely transported across state boundaries"
   },
   {
-    value: "XX+",
-    label: "Vehicles Available",
-    description: "Diverse road transportation fleet"
+    value: 300,
+    suffix: "+",
+    label: "Our Clients",
+    description: "Industrial and commercial business partners"
   },
   {
-    value: "XX+",
-    label: "Satisfied Customers",
-    description: "Industrial and commercial business partners"
+    value: 200,
+    suffix: "+",
+    label: "Owned Vehicles",
+    description: "Diverse road transportation fleet"
   }
 ];
 
-export const services = [
+export interface Service {
+  id: string;
+  title: string;
+  shortDesc: string;
+  iconName: string;
+  image: string;
+  path: string;
+  longDesc: string;
+  suitableCargo: string[];
+  process: { step: string; name: string; desc: string }[];
+  considerations: string;
+  benefits: string[];
+}
+
+export const services: Service[] = [
   {
     id: "full-truck-load",
     title: "FULL TRUCK LOADS (FTL) & BULK LOAD",
     shortDesc: "Dedicated road transportation solutions for larger consignments requiring full vehicle capacity.",
     iconName: "Truck",
+    image: "/images/truck-roadside-day.jpeg",
     path: "/services/full-truck-load",
     longDesc: "Vayu India Roadways Pvt. Ltd. provides reliable Full Truck Load (FTL) services across key routes in India. By choosing our FTL solution, you get dedicated vehicle capacity for your cargo, minimizing transit times and reducing cargo handling points.",
     suitableCargo: [
@@ -71,6 +98,7 @@ export const services = [
     title: "LESS THAN TRUCK LOADS (LTL) & PART LOADS",
     shortDesc: "Flexible transportation options for consignments that do not require a full truck.",
     iconName: "Boxes",
+    image: "/images/truck-night-highway.jpeg",
     path: "/services/part-load",
     longDesc: "When your cargo doesn't fill an entire truck, our Less Than Truckload (LTL) and Part Load services provide a practical, budget-friendly alternative. We coordinate route-compatible shipments to ensure economical movement without compromising on safety and tracking.",
     suitableCargo: [
@@ -99,6 +127,7 @@ export const services = [
     title: "LCV & LPT LOADS",
     shortDesc: "Practical vehicle solutions for lighter consignments and routes requiring smaller commercial vehicles.",
     iconName: "Container",
+    image: "/images/truck-front-day.jpeg",
     path: "/services/lcv-lpt",
     longDesc: "Light Commercial Vehicles (LCV) and Light Payload Trucks (LPT) are ideal for regional transport, city entries, and smaller cargo capacities. We coordinate dependable LCV/LPT transport for fast, agile deliveries where heavy trucks face restriction or are sub-optimal.",
     suitableCargo: [
@@ -127,6 +156,7 @@ export const services = [
     title: "PROJECT LOGISTICS & ODC",
     shortDesc: "Transportation coordination for oversized, heavy or specialised consignments requiring careful planning.",
     iconName: "Compass",
+    image: "/images/odc-cargo.jpeg",
     path: "/services/project-logistics",
     longDesc: "Over-Dimensional Cargo (ODC) and large-scale industrial projects demand specialized logistics engineering. Vayu India Roadways Pvt. Ltd. plans, coordinates, and manages the road transit of oversized, heavy structures with detailed focus on route clearances and technical safety.",
     suitableCargo: [
@@ -155,6 +185,7 @@ export const services = [
     title: "PROJECT TRANSPORTATION",
     shortDesc: "Coordinated road transportation for project-based cargo and complex movement requirements.",
     iconName: "Shuffle",
+    image: "/images/truck-roadside-day.jpeg",
     path: "/services/project-transportation",
     longDesc: "When a major infrastructure, power, or manufacturing project is initiated, moving hundreds of consignments in sync is crucial. Our Project Transportation service manages high-volume, synchronized road movements to supply industrial construction sites reliably.",
     suitableCargo: [
@@ -183,6 +214,7 @@ export const services = [
     title: "WAREHOUSING SERVICES",
     shortDesc: "Organised storage and logistics support for businesses requiring dependable cargo handling and movement coordination.",
     iconName: "Warehouse",
+    image: "/images/warehouse.jpeg",
     path: "/services/warehousing",
     longDesc: "To complement our road transportation services, we offer strategic warehousing support. This service assists businesses in consolidating their products, managing transit inventory, and coordinating safe cargo staging near key Indian transit hubs.",
     suitableCargo: [

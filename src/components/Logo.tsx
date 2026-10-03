@@ -1,4 +1,5 @@
 import React from "react";
+import { siteImages } from "../data/images";
 
 interface LogoProps {
   className?: string;
@@ -7,7 +8,20 @@ interface LogoProps {
 }
 
 export default function Logo({ className = "", variant = "horizontal", size = 48 }: LogoProps) {
-  // SVG Vector definition of the custom Vayu logo
+  // Official Vayu India Roadways logo badge
+  const LogoImage = ({ svgSize }: { svgSize: number }) => (
+    <img
+      src={siteImages.logo}
+      alt="Vayu India Roadways Pvt Ltd logo"
+      width={svgSize}
+      height={svgSize}
+      style={{ width: svgSize, height: svgSize }}
+      className="inline-block align-middle rounded-full object-contain bg-white select-none"
+      draggable={false}
+    />
+  );
+
+  // Legacy SVG vector approximation of the logo (kept for reference / offline use)
   const LogoSVG = ({ svgSize }: { svgSize: number }) => (
     <svg
       width={svgSize}
@@ -235,13 +249,13 @@ export default function Logo({ className = "", variant = "horizontal", size = 48
   );
 
   if (variant === "mark-only") {
-    return <LogoSVG svgSize={size} />;
+    return <LogoImage svgSize={size} />;
   }
 
   if (variant === "horizontal") {
     return (
       <div className={`flex items-center gap-3 ${className}`}>
-        <LogoSVG svgSize={size} />
+        <LogoImage svgSize={size} />
         <div className="flex flex-col select-none">
           <span className="text-sm font-extrabold tracking-[0.2em] text-[#0B2A6F] uppercase leading-none">
             Vayu India
@@ -260,7 +274,7 @@ export default function Logo({ className = "", variant = "horizontal", size = 48
   // Full variant is just the massive logo badge
   return (
     <div className={`text-center ${className}`}>
-      <LogoSVG svgSize={size} />
+      <LogoImage svgSize={size} />
     </div>
   );
 }

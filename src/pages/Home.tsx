@@ -1,7 +1,8 @@
 import React from "react";
 import { company, stats, services, industries } from "../data/company";
-import { fleetImages, getImageUrl } from "../data/images";
+import { fleetImages, getImageUrl, siteImages } from "../data/images";
 import { Link } from "../components/Router";
+import AnimatedCounter from "../components/AnimatedCounter";
 import {
   Shield,
   Clock,
@@ -17,7 +18,9 @@ import {
   Warehouse,
   ChevronRight,
   Phone,
-  FileText
+  FileText,
+  Users,
+  ThumbsUp
 } from "lucide-react";
 
 interface HomeProps {
@@ -176,7 +179,7 @@ export default function Home({ onQuoteClick }: HomeProps) {
               Operational Pillars
             </span>
             <h2 className="text-3xl font-extrabold text-[#172033] mt-2 tracking-tight">
-              One Stop Solution For Your Logistics Needs
+              What Drives Every Delivery
             </h2>
             <div className="w-12 h-1 bg-[#F47B20] mx-auto mt-4" />
           </div>
@@ -239,26 +242,51 @@ export default function Home({ onQuoteClick }: HomeProps) {
 
 
       {/* --------------------------------------------------------
-          SECTION 4 — BUSINESS STATISTICS (No fabricated data)
+          SECTION 4 — BUSINESS STATISTICS (animated counters)
           -------------------------------------------------------- */}
-      <section className="bg-[#0B2A6F] text-white py-16 relative">
-        <div className="absolute inset-0 bg-[radial-gradient(#1455C0_1px,transparent_1px)] [background-size:16px_16px] opacity-10" />
+      <section className="relative bg-[#555585] text-white py-16 sm:py-20 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            {stats.map((stat, idx) => (
-              <div key={idx} className="text-center space-y-2 border-r last:border-0 border-white/10 px-4">
-                <span className="block text-4xl sm:text-5xl font-black text-white tracking-tight">
-                  {stat.value}
-                </span>
-                <div className="w-8 h-1 bg-[#F47B20] mx-auto" />
-                <span className="block text-xs font-extrabold uppercase tracking-widest text-[#F47B20]">
-                  {stat.label}
-                </span>
-                <p className="text-[10px] text-white/60 leading-relaxed hidden sm:block">
-                  {stat.description}
-                </p>
-              </div>
-            ))}
+          <h2 className="text-3xl sm:text-4xl font-black text-center tracking-tight mb-12">
+            One Stop Solution For Logistics Needs
+          </h2>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+            {/* Left: illustration */}
+            <div className="relative">
+              <img
+                src={siteImages.logisticsTeam}
+                alt="Vayu India Roadways logistics team planning transport operations"
+                className="w-full max-w-xl mx-auto select-none [mask-image:radial-gradient(ellipse_at_center,black_65%,transparent_100%)]"
+                loading="lazy"
+              />
+            </div>
+
+            {/* Right: 2x2 animated stat cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {stats.map((stat, idx) => (
+                <div
+                  key={idx}
+                  className="group relative overflow-hidden rounded-md bg-[#0E0A4F] px-6 py-8 text-center shadow-lg ring-1 ring-white/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:ring-[#F47B20]/40"
+                >
+                  {/* diagonal stripe texture */}
+                  <div className="pointer-events-none absolute inset-0 opacity-[0.07] bg-[repeating-linear-gradient(135deg,#ffffff_0px,#ffffff_1px,transparent_1px,transparent_9px)]" />
+                  {/* soft corner glow */}
+                  <div className="pointer-events-none absolute -right-10 -bottom-10 w-32 h-32 rounded-full bg-[#1455C0]/30 blur-2xl transition-opacity duration-300 group-hover:opacity-80" />
+
+                  <div className="relative">
+                    <AnimatedCounter
+                      end={stat.value}
+                      suffix={stat.suffix}
+                      duration={2000 + idx * 250}
+                      className="block text-3xl sm:text-4xl font-black tracking-tight text-white tabular-nums"
+                    />
+                    <span className="mt-3 block text-sm font-semibold text-[#5B8DEF]">
+                      {stat.label}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -267,75 +295,53 @@ export default function Home({ onQuoteClick }: HomeProps) {
       {/* --------------------------------------------------------
           SECTION 5 — END-TO-END PROCESS
           -------------------------------------------------------- */}
-      <section className="py-20 bg-white">
+      <section className="py-16 bg-[#FFF9F5]/70 border-t border-b border-orange-100/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-xs font-extrabold uppercase tracking-widest text-[#1455C0]">
-              Operational Workflow
-            </span>
-            <h2 className="text-3xl font-extrabold text-[#172033] mt-2 tracking-tight">
-              End-to-End Transportation Process
+          <div className="text-center mb-10">
+            <h2 className="text-3xl sm:text-4xl font-black text-[#171F38] tracking-tight">
+              End-To-End Process
             </h2>
-            <div className="w-12 h-1 bg-[#F47B20] mx-auto mt-4" />
           </div>
 
-          {/* Timeline Wrapper */}
-          <div className="relative">
-            {/* Connecting Line (Desktop) */}
-            <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-[#E5EAF0] -translate-y-1/2 hidden lg:block z-0" />
-
-            <div className="grid grid-cols-1 lg:grid-cols-4 gap-10 relative z-10">
-              {/* Step 1 */}
-              <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow text-center lg:text-left">
-                <div className="w-12 h-12 bg-[#0B2A6F] text-white rounded-full flex items-center justify-center font-black text-lg mx-auto lg:mx-0 mb-4 shadow-md border-4 border-white ring-4 ring-[#0B2A6F]/10">
-                  01
-                </div>
-                <h4 className="text-sm font-extrabold uppercase tracking-wider text-[#172033] mb-2">
-                  INQUIRE
-                </h4>
-                <p className="text-xs text-gray-500 leading-relaxed">
-                  Share your cargo, weight, pickup location, and target route details with our dispatch desk.
-                </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 max-w-6xl mx-auto">
+            {/* Pill 1: Inquire */}
+            <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100 flex items-center gap-4 hover:shadow-md transition-shadow">
+              <div className="w-12 h-12 rounded-full bg-[#1A89EC] text-white flex items-center justify-center flex-shrink-0 shadow-sm">
+                <FileText className="w-6 h-6" />
               </div>
+              <span className="font-extrabold text-[#171F38] text-base tracking-tight">
+                Inquire
+              </span>
+            </div>
 
-              {/* Step 2 */}
-              <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow text-center lg:text-left">
-                <div className="w-12 h-12 bg-[#1455C0] text-white rounded-full flex items-center justify-center font-black text-lg mx-auto lg:mx-0 mb-4 shadow-md border-4 border-white ring-4 ring-[#1455C0]/10">
-                  02
-                </div>
-                <h4 className="text-sm font-extrabold uppercase tracking-wider text-[#172033] mb-2">
-                  DISCUSS
-                </h4>
-                <p className="text-xs text-gray-500 leading-relaxed">
-                  Our team reviews the cargo type, timing restrictions, and matches your load to the appropriate vehicle type.
-                </p>
+            {/* Pill 2: Discuss */}
+            <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100 flex items-center gap-4 hover:shadow-md transition-shadow">
+              <div className="w-12 h-12 rounded-full bg-[#00B4D8] text-white flex items-center justify-center flex-shrink-0 shadow-sm">
+                <Users className="w-6 h-6" />
               </div>
+              <span className="font-extrabold text-[#171F38] text-base tracking-tight">
+                Discuss
+              </span>
+            </div>
 
-              {/* Step 3 */}
-              <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow text-center lg:text-left">
-                <div className="w-12 h-12 bg-[#F47B20] text-white rounded-full flex items-center justify-center font-black text-lg mx-auto lg:mx-0 mb-4 shadow-md border-4 border-white ring-4 ring-[#F47B20]/10">
-                  03
-                </div>
-                <h4 className="text-sm font-extrabold uppercase tracking-wider text-[#172033] mb-2">
-                  LOADING
-                </h4>
-                <p className="text-xs text-gray-500 leading-relaxed">
-                  Vehicles are placed securely at the pickup point, loaded with due care, and secured before leaving the yard.
-                </p>
+            {/* Pill 3: Loading */}
+            <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100 flex items-center gap-4 hover:shadow-md transition-shadow">
+              <div className="w-12 h-12 rounded-full bg-[#FFA000] text-white flex items-center justify-center flex-shrink-0 shadow-sm">
+                <Truck className="w-6 h-6" />
               </div>
+              <span className="font-extrabold text-[#171F38] text-base tracking-tight">
+                Loading
+              </span>
+            </div>
 
-              {/* Step 4 */}
-              <div className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow text-center lg:text-left">
-                <div className="w-12 h-12 bg-[#169447] text-white rounded-full flex items-center justify-center font-black text-lg mx-auto lg:mx-0 mb-4 shadow-md border-4 border-white ring-4 ring-[#169447]/10">
-                  04
-                </div>
-                <h4 className="text-sm font-extrabold uppercase tracking-wider text-[#172033] mb-2">
-                  DELIVERY
-                </h4>
-                <p className="text-xs text-gray-500 leading-relaxed">
-                  The shipment reaches its destination safely through organized roads, backed by regular transit communications.
-                </p>
+            {/* Pill 4: Delivery */}
+            <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-100 flex items-center gap-4 hover:shadow-md transition-shadow">
+              <div className="w-12 h-12 rounded-full bg-[#1E75E6] text-white flex items-center justify-center flex-shrink-0 shadow-sm">
+                <ThumbsUp className="w-6 h-6" />
               </div>
+              <span className="font-extrabold text-[#171F38] text-base tracking-tight">
+                Delivery
+              </span>
             </div>
           </div>
         </div>
@@ -343,56 +349,50 @@ export default function Home({ onQuoteClick }: HomeProps) {
 
 
       {/* --------------------------------------------------------
-          SECTION 6 — SERVICES
+          SECTION 6 — SERVICES VERTICALS THAT WE EMPOWER
           -------------------------------------------------------- */}
-      <section className="py-20 bg-[#F5F7FA] border-t border-b border-gray-200">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-xs font-extrabold uppercase tracking-widest text-[#1455C0]">
-              What We Offer
-            </span>
-            <h2 className="text-3xl font-extrabold text-[#172033] mt-2 tracking-tight">
-              Transportation Services We Provide
+          <div className="text-center mb-14">
+            <h2 className="text-3xl sm:text-4xl font-black text-[#0F172A] tracking-tight">
+              Services Verticals That We Empower
             </h2>
-            <div className="w-12 h-1 bg-[#F47B20] mx-auto mt-4" />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service) => (
               <div
                 key={service.id}
-                className="bg-white rounded-lg border border-gray-200 overflow-hidden shadow-sm hover:shadow-md hover:border-[#1455C0]/40 transition-all flex flex-col group"
+                className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl border border-gray-200/80 transition-all duration-300 flex flex-col group"
               >
-                {/* Header Highlight Line */}
-                <div className="h-1 w-full bg-[#1455C0] group-hover:bg-[#F47B20] transition-colors" />
+                {/* Image header */}
+                <div className="relative h-56 sm:h-60 overflow-hidden bg-gray-100">
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
 
-                <div className="p-6 sm:p-8 flex-grow flex flex-col justify-between">
-                  <div className="space-y-4">
-                    {/* Icon */}
-                    <div className="p-3 bg-[#1455C0]/5 rounded-lg inline-block">
-                      {getServiceIcon(service.iconName)}
-                    </div>
-                    {/* Title */}
-                    <h3 className="text-base font-bold text-[#0B2A6F] tracking-wide uppercase leading-tight min-h-[40px]">
+                {/* Card Content */}
+                <div className="p-6 flex-grow flex flex-col justify-between space-y-4">
+                  <div>
+                    <h3 className="text-lg font-black text-[#1E293B] leading-snug tracking-tight mb-2">
                       {service.title}
                     </h3>
-                    {/* Short Description */}
-                    <p className="text-xs text-gray-500 leading-relaxed">
+                    <p className="text-xs text-gray-500 leading-relaxed line-clamp-2">
                       {service.shortDesc}
                     </p>
                   </div>
 
-                  {/* Know More link */}
-                  <div className="pt-6 border-t border-gray-100 mt-6 flex items-center justify-between">
+                  <div className="pt-2">
                     <Link
                       href={service.path}
-                      className="text-xs font-extrabold text-[#1455C0] hover:text-[#0B2A6F] uppercase tracking-wider flex items-center gap-1 group-hover:translate-x-1 transition-transform"
+                      className="inline-flex items-center gap-1.5 text-xs font-black uppercase text-[#1455C0] hover:text-[#0B2A6F] tracking-wider group/link"
                     >
-                      Know More <ChevronRight className="w-4 h-4" />
+                      <span className="border-b-2 border-transparent group-hover/link:border-[#1455C0]">KNOW MORE</span>
+                      <ChevronRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
                     </Link>
-                    <span className="text-xs font-bold text-gray-200 uppercase">
-                      Vayu Service
-                    </span>
                   </div>
                 </div>
               </div>
