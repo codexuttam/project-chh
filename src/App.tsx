@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { RouterProvider, useRouter } from "./components/Router";
 import TopBar from "./components/TopBar";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import GetQuoteModal from "./components/GetQuoteModal";
+import { PhoneModalProvider, usePhoneModal } from "./context/PhoneModalContext";
 
 // Pages
 import Home from "./pages/Home";
@@ -17,7 +17,7 @@ import Contact from "./pages/Contact";
 
 function AppContent() {
   const { path } = useRouter();
-  const [isQuoteOpen, setIsQuoteOpen] = useState(false);
+  const { openQuoteModal } = usePhoneModal();
 
   // Dynamic Page Title & SEO Metadata synchronization on path change
   useEffect(() => {
@@ -61,7 +61,7 @@ function AppContent() {
   // Route Renderer
   const renderPage = () => {
     if (path === "/") {
-      return <Home onQuoteClick={() => setIsQuoteOpen(true)} />;
+      return <Home onQuoteClick={openQuoteModal} />;
     }
     if (path === "/about") {
       return <About />;
@@ -70,7 +70,7 @@ function AppContent() {
       return <Services />;
     }
     if (path.startsWith("/services/")) {
-      return <ServiceDetail onQuoteClick={() => setIsQuoteOpen(true)} />;
+      return <ServiceDetail onQuoteClick={openQuoteModal} />;
     }
     if (path === "/network") {
       return <Network />;
@@ -86,7 +86,7 @@ function AppContent() {
     }
 
     // Default Fallback
-    return <Home onQuoteClick={() => setIsQuoteOpen(true)} />;
+    return <Home onQuoteClick={openQuoteModal} />;
   };
 
   return (
@@ -94,7 +94,7 @@ function AppContent() {
       {/* Structural Header */}
       <header className="flex-shrink-0">
         <TopBar />
-        <Navbar onQuoteClick={() => setIsQuoteOpen(true)} />
+        <Navbar onQuoteClick={openQuoteModal} />
       </header>
 
       {/* Dynamic Content */}
@@ -104,9 +104,6 @@ function AppContent() {
 
       {/* Structural Footer */}
       <Footer />
-
-      {/* Global Form Quote Modal */}
-      <GetQuoteModal isOpen={isQuoteOpen} onClose={() => setIsQuoteOpen(false)} />
     </div>
   );
 }
@@ -114,7 +111,9 @@ function AppContent() {
 export default function App() {
   return (
     <RouterProvider>
-      <AppContent />
+      <PhoneModalProvider>
+        <AppContent />
+      </PhoneModalProvider>
     </RouterProvider>
   );
 }

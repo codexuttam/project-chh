@@ -3,6 +3,7 @@ import { Menu, X, ChevronDown, PhoneCall } from "lucide-react";
 import Logo from "./Logo";
 import { Link, useRouter } from "./Router";
 import { company, services } from "../data/company";
+import { usePhoneModal } from "../context/PhoneModalContext";
 
 interface NavbarProps {
   onQuoteClick: () => void;
@@ -10,6 +11,7 @@ interface NavbarProps {
 
 export default function Navbar({ onQuoteClick }: NavbarProps) {
   const { path } = useRouter();
+  const { openPhoneModal } = usePhoneModal();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -112,13 +114,13 @@ export default function Navbar({ onQuoteClick }: NavbarProps) {
 
           {/* Right Area CTA button */}
           <div className="hidden lg:flex items-center space-x-4">
-            <a
-              href={`tel:${company.phone.replace(/\s+/g, "")}`}
-              className="flex items-center gap-2 text-xs font-bold text-[#0B2A6F] border border-gray-200 py-2 px-3 rounded hover:bg-gray-50 transition-colors"
+            <button
+              onClick={openPhoneModal}
+              className="flex items-center gap-2 text-xs font-bold text-[#0B2A6F] border border-gray-200 py-2 px-3 rounded hover:bg-gray-50 transition-colors cursor-pointer"
             >
               <PhoneCall className="w-3.5 h-3.5 text-[#F47B20]" />
               <span>Call Team</span>
-            </a>
+            </button>
             <button
               onClick={onQuoteClick}
               className="bg-[#1455C0] hover:bg-[#0B2A6F] text-white text-xs font-bold tracking-wider uppercase py-2.5 px-5 rounded-md shadow transition-all hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#1455C0]"

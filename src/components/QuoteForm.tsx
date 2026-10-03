@@ -92,16 +92,63 @@ export default function QuoteForm({ onSuccessCallback, compact = false }: QuoteF
   };
 
   if (status === "success") {
+    const refId = `VIR-Q-${Math.floor(100000 + Math.random() * 900000)}`;
     return (
-      <div className="bg-white p-8 rounded-lg text-center flex flex-col items-center justify-center border border-emerald-100 shadow-sm max-w-md mx-auto my-6">
-        <CheckCircle2 className="w-16 h-16 text-[#169447] mb-4" />
-        <h3 className="text-2xl font-bold text-[#172033] mb-2">Quote Requested!</h3>
-        <p className="text-gray-600 mb-6 text-sm">
-          Thank you for sharing your logistics requirements. Our operations team from Pai, Kaithal will evaluate your routes and cargo specs and contact you within 2-4 hours.
-        </p>
-        <div className="text-xs bg-[#F5F7FA] py-2 px-4 rounded border border-gray-100 text-gray-500">
-          Urgent requirement? Call us directly: <span className="font-bold text-[#0B2A6F]">{company.phone}</span>
+      <div className="bg-white p-8 sm:p-10 rounded-2xl text-center flex flex-col items-center justify-center border border-emerald-100 shadow-xl max-w-lg mx-auto my-4 animate-in zoom-in-95 duration-300">
+        <div className="relative mb-5">
+          <div className="w-20 h-20 bg-emerald-50 rounded-full flex items-center justify-center ring-8 ring-emerald-50/60 shadow-inner">
+            <CheckCircle2 className="w-10 h-10 text-[#169447]" />
+          </div>
+          <span className="absolute -bottom-1 -right-1 flex h-4 w-4">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-4 w-4 bg-emerald-500"></span>
+          </span>
         </div>
+
+        <span className="text-[11px] font-black uppercase tracking-widest text-[#169447] bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full mb-3">
+          Quote Ticket Generated • Ref #{refId}
+        </span>
+
+        <h3 className="text-2xl font-black text-[#172033] mb-2 tracking-tight">
+          Cargo Quote Requested!
+        </h3>
+
+        <p className="text-gray-600 mb-6 text-xs sm:text-sm leading-relaxed max-w-md">
+          Thank you for sharing your logistics requirements with <span className="font-bold text-[#0B2A6F]">Vayu India Roadways Pvt. Ltd.</span> Our operational team in Pai, Kaithal will calculate your route parameters and send your tailored quote within 2 hours.
+        </p>
+
+        <div className="w-full bg-[#F5F7FA] p-4 rounded-xl border border-gray-100 mb-6 text-left space-y-2 text-xs">
+          <div className="flex justify-between items-center text-gray-500">
+            <span>Ticket Reference:</span>
+            <span className="font-mono font-bold text-[#0B2A6F]">{refId}</span>
+          </div>
+          <div className="flex justify-between items-center text-gray-500">
+            <span>Direct Dispatch Phone:</span>
+            <span className="font-bold text-[#1455C0]">{company.phone}</span>
+          </div>
+        </div>
+
+        <button
+          onClick={() => {
+            setFormData({
+              name: "",
+              companyName: "",
+              phone: "",
+              email: "",
+              pickup: "",
+              delivery: "",
+              cargoType: "",
+              weight: "",
+              vehicleRequirement: "full-truck-load",
+              preferredDate: "",
+              message: ""
+            });
+            setStatus("idle");
+          }}
+          className="text-xs font-black uppercase tracking-wider text-[#1455C0] hover:text-[#0B2A6F] bg-blue-50 hover:bg-blue-100 py-3 px-6 rounded-xl transition-all"
+        >
+          Submit Another Quote Request
+        </button>
       </div>
     );
   }

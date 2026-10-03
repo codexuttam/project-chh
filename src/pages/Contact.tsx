@@ -3,8 +3,10 @@ import { company } from "../data/company";
 import ContactForm from "../components/ContactForm";
 import { MapPin, Phone, Mail, Clock, ShieldCheck, CornerDownRight, Instagram } from "lucide-react";
 import { fleetImages, getImageUrl } from "../data/images";
+import { usePhoneModal } from "../context/PhoneModalContext";
 
 export default function Contact() {
+  const { openPhoneModal } = usePhoneModal();
   return (
     <div className="bg-white min-h-screen">
       {/* --------------------------------------------------------
@@ -84,12 +86,12 @@ export default function Contact() {
                     <h3 className="text-xs font-extrabold uppercase text-gray-400 tracking-wider mb-1">
                       Direct Dial Line
                     </h3>
-                    <a
-                      href={`tel:${company.phone.replace(/\s+/g, "")}`}
-                      className="text-base font-black text-[#0B2A6F] hover:text-[#1455C0] transition-colors tracking-wide"
+                    <button
+                      onClick={openPhoneModal}
+                      className="text-base font-black text-[#0B2A6F] hover:text-[#1455C0] transition-colors tracking-wide text-left cursor-pointer"
                     >
                       {company.phone}
-                    </a>
+                    </button>
                     <p className="text-[10px] text-gray-400 mt-0.5">Available Mon-Sat: 9 AM - 7 PM</p>
                   </div>
                 </div>

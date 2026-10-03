@@ -3,9 +3,11 @@ import Logo from "./Logo";
 import { Link } from "./Router";
 import { company, services } from "../data/company";
 import { Phone, Mail, MapPin, ExternalLink, ShieldCheck, Instagram } from "lucide-react";
+import { usePhoneModal } from "../context/PhoneModalContext";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const { openPhoneModal } = usePhoneModal();
 
   return (
     <footer className="bg-[#172033] text-gray-300 border-t-4 border-[#F47B20]">
@@ -103,9 +105,9 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-4 h-4 text-[#F47B20] flex-shrink-0" />
-                <a href={`tel:${company.phone.replace(/\s+/g, "")}`} className="hover:text-white transition-colors">
+                <button onClick={openPhoneModal} className="hover:text-white transition-colors cursor-pointer text-left">
                   {company.phone}
-                </a>
+                </button>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-4 h-4 text-[#F47B20] flex-shrink-0" />
