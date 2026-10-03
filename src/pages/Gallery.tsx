@@ -33,8 +33,14 @@ export default function Gallery() {
     }
   }, [lightboxIndex, filteredImages.length]);
 
-  // Keyboard navigation for Lightbox
+  // Keyboard navigation & scroll locking for Lightbox
   useEffect(() => {
+    if (lightboxIndex !== null) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
     const handleKeyDown = (e: KeyboardEvent) => {
       if (lightboxIndex === null) return;
       if (e.key === "Escape") closeLightbox();
@@ -43,7 +49,10 @@ export default function Gallery() {
     };
 
     window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
+    return () => {
+      document.body.style.overflow = "auto";
+      window.removeEventListener("keydown", handleKeyDown);
+    };
   }, [lightboxIndex, closeLightbox, nextImage, prevImage]);
 
   const categories = ["All", "Fleet Carriers", "Project & ODC", "Warehousing"];

@@ -256,7 +256,11 @@ export default function Home({ onQuoteClick }: HomeProps) {
               <img
                 src={siteImages.logisticsTeam}
                 alt="Vayu India Roadways logistics team planning transport operations"
-                className="w-full max-w-xl mx-auto select-none [mask-image:radial-gradient(ellipse_at_center,black_65%,transparent_100%)]"
+                style={{
+                  WebkitMaskImage: "radial-gradient(ellipse at center, black 65%, transparent 100%)",
+                  maskImage: "radial-gradient(ellipse at center, black 65%, transparent 100%)"
+                }}
+                className="w-full max-w-xl mx-auto select-none"
                 loading="lazy"
               />
             </div>
