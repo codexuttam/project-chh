@@ -1,0 +1,6 @@
+{
+  "name": "Vayu India Roadways Pvt. Ltd.",
+  "description": "Official website of Vayu India Roadways Pvt. Ltd., offering dependable road transportation & logistics services across India.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
