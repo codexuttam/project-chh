@@ -70,11 +70,6 @@ export default function Home({ onQuoteClick }: HomeProps) {
         {/* Hero Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="max-w-3xl">
-            {/* Tagline / Eyebrow */}
-            <span className="inline-flex items-center gap-2 bg-[#F47B20] text-white text-xs font-extrabold uppercase tracking-widest px-3.5 py-1.5 rounded-full mb-6">
-              <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
-              Road Transportation & Logistics
-            </span>
 
             {/* Main Heading */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-[1.1] mb-6 tracking-tight">
