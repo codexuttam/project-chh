@@ -105,12 +105,14 @@ export default function Contact() {
                     <h3 className="text-xs font-extrabold uppercase text-gray-400 tracking-wider mb-1">
                       Corporate Communications
                     </h3>
-                    <button
-                      onClick={openEmailModal}
-                      className="text-sm font-bold text-[#0B2A6F] hover:text-[#1455C0] transition-colors lowercase text-left cursor-pointer"
+                    <a
+                      href={company.emailUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm font-bold text-[#0B2A6F] hover:text-[#1455C0] transition-colors lowercase"
                     >
                       {company.email}
-                    </button>
+                    </a>
                   </div>
                 </div>
 

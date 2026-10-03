@@ -2,6 +2,7 @@ export const company = {
   name: "VAYU INDIA ROADWAYS PVT. LTD.",
   phone: "+91 7988142428",
   email: "VAYUINDIAROADWAYS@GMAIL.COM",
+  emailUrl: "https://mail.google.com/mail/?view=cm&fs=1&to=VAYUINDIAROADWAYS@GMAIL.COM",
   instagram: "@vayuindiaroadways",
   instagramUrl: "https://www.instagram.com/vayuindiaroadways/",
   address: "Building No. 1882, Near Library, Pai, District Kaithal, Haryana - 136043",

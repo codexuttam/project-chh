@@ -82,9 +82,9 @@ export default function Network() {
                   <Mail className="w-5 h-5 text-[#1455C0] flex-shrink-0" />
                   <div>
                     <h3 className="text-xs font-black uppercase text-gray-400 tracking-widest mb-1">Corporate Communications</h3>
-                    <button onClick={openEmailModal} className="text-sm font-extrabold text-[#0B2A6F] hover:text-[#1455C0] transition-colors lowercase cursor-pointer text-left">
+                    <a href={company.emailUrl} target="_blank" rel="noopener noreferrer" className="text-sm font-extrabold text-[#0B2A6F] hover:text-[#1455C0] transition-colors lowercase">
                       {company.email}
-                    </button>
+                    </a>
                   </div>
                 </div>
               </div>

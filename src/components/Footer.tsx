@@ -111,9 +111,9 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-4 h-4 text-[#F47B20] flex-shrink-0" />
-                <button onClick={openEmailModal} className="hover:text-white transition-colors lowercase text-xs cursor-pointer text-left">
+                <a href={company.emailUrl} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors lowercase text-xs">
                   {company.email}
-                </button>
+                </a>
               </li>
               <li className="flex items-center gap-3">
                 <Instagram className="w-4 h-4 text-[#F47B20] flex-shrink-0" />

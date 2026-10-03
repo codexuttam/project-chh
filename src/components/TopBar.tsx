@@ -19,14 +19,16 @@ export default function TopBar() {
             <Phone className="w-3.5 h-3.5 text-[#F47B20]" />
             <span className="font-semibold tracking-wider">{company.phone}</span>
           </button>
-          <button
-            onClick={openEmailModal}
+          <a
+            href={company.emailUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex items-center gap-2 hover:text-[#F47B20] transition-colors focus:outline-none focus:ring-1 focus:ring-[#F47B20] rounded px-1 cursor-pointer"
             aria-label={`Email us at ${company.email}`}
           >
             <Mail className="w-3.5 h-3.5 text-[#F47B20]" />
             <span className="font-semibold lowercase tracking-wider">{company.email}</span>
-          </button>
+          </a>
           <a
             href={company.instagramUrl}
             target="_blank"
