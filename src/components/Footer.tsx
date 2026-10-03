@@ -2,7 +2,7 @@ import React from "react";
 import Logo from "./Logo";
 import { Link } from "./Router";
 import { company, services } from "../data/company";
-import { Phone, Mail, MapPin, ExternalLink, ShieldCheck } from "lucide-react";
+import { Phone, Mail, MapPin, ExternalLink, ShieldCheck, Instagram } from "lucide-react";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -111,6 +111,12 @@ export default function Footer() {
                 <Mail className="w-4 h-4 text-[#F47B20] flex-shrink-0" />
                 <a href={`mailto:${company.email}`} className="hover:text-white transition-colors lowercase text-xs">
                   {company.email}
+                </a>
+              </li>
+              <li className="flex items-center gap-3">
+                <Instagram className="w-4 h-4 text-[#F47B20] flex-shrink-0" />
+                <a href={company.instagramUrl} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors text-xs font-medium">
+                  {company.instagram}
                 </a>
               </li>
             </ul>

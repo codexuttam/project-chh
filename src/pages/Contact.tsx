@@ -1,7 +1,7 @@
 import React from "react";
 import { company } from "../data/company";
 import ContactForm from "../components/ContactForm";
-import { MapPin, Phone, Mail, Clock, ShieldCheck, CornerDownRight } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, ShieldCheck, CornerDownRight, Instagram } from "lucide-react";
 import { fleetImages, getImageUrl } from "../data/images";
 
 export default function Contact() {
@@ -108,6 +108,26 @@ export default function Contact() {
                       className="text-sm font-bold text-[#0B2A6F] hover:text-[#1455C0] transition-colors lowercase"
                     >
                       {company.email}
+                    </a>
+                  </div>
+                </div>
+
+                {/* Instagram Channel */}
+                <div className="flex gap-4">
+                  <div className="w-10 h-10 bg-[#F47B20]/10 text-[#F47B20] rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                    <Instagram className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h3 className="text-xs font-extrabold uppercase text-gray-400 tracking-wider mb-1">
+                      Official Instagram
+                    </h3>
+                    <a
+                      href={company.instagramUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm font-bold text-[#0B2A6F] hover:text-[#F47B20] transition-colors"
+                    >
+                      {company.instagram}
                     </a>
                   </div>
                 </div>

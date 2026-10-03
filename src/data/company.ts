@@ -2,6 +2,8 @@ export const company = {
   name: "VAYU INDIA ROADWAYS PVT. LTD.",
   phone: "+91 7988142428",
   email: "VAYUINDIAROADWAYS@GMAIL.COM",
+  instagram: "@vayuindiaroadways",
+  instagramUrl: "https://www.instagram.com/vayuindiaroadways/",
   address: "Building No. 1882, Near Library, Pai, District Kaithal, Haryana - 136043",
   location: "Pai, Kaithal, Haryana, India",
   primaryColor: "#0B2A6F", // Deep Navy Blue
@@ -25,24 +27,25 @@ export interface Stat {
 
 export const stats: Stat[] = [
   {
-    value: 50,
+    value: 9,
     suffix: "+",
     label: "Our Branches",
     description: "Extensive networks covering major industrial centers"
   },
   {
-    value: 5500000,
-    label: "Work Done (In Ton)",
+    value: 55000,
+    suffix: " MT",
+    label: "Work Done",
     description: "Cargo safely transported across state boundaries"
   },
   {
-    value: 300,
+    value: 65,
     suffix: "+",
     label: "Our Clients",
     description: "Industrial and commercial business partners"
   },
   {
-    value: 200,
+    value: 30,
     suffix: "+",
     label: "Owned Vehicles",
     description: "Diverse road transportation fleet"
