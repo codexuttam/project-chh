@@ -47,10 +47,16 @@ export default function TopBar() {
             <Clock className="w-3.5 h-3.5 text-white/50" />
             <span>Mon - Sat: 9:00 AM - 7:00 PM</span>
           </div>
-          <div className="flex items-center gap-1.5 text-white/80">
+          <a
+            href={company.mapsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 text-white/80 hover:text-[#F47B20] transition-colors"
+            title="Open location in Google Maps"
+          >
             <MapPin className="w-3.5 h-3.5 text-[#169447]" />
             <span>Pai, Kaithal, HR, IN</span>
-          </div>
+          </a>
         </div>
       </div>
     </div>

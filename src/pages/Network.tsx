@@ -58,13 +58,24 @@ export default function Network() {
                   <MapPin className="w-6 h-6 text-[#F47B20] flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="text-xs font-black uppercase text-gray-400 tracking-widest mb-1">Registered Address</h3>
-                    <p className="text-sm font-extrabold text-[#172033] leading-relaxed uppercase">
-                      VAYU INDIA ROADWAYS PVT. LTD.<br />
-                      BUILDING NO. 1882,<br />
-                      NEAR LIBRARY,<br />
-                      PAI, DISTRICT KAITHAL,<br />
-                      HARYANA - 136043, INDIA
-                    </p>
+                    <a
+                      href={company.mapsUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group block text-sm font-extrabold text-[#172033] hover:text-[#1455C0] leading-relaxed uppercase transition-colors"
+                      title="Open location in Google Maps"
+                    >
+                      <span className="group-hover:underline">
+                        VAYU INDIA ROADWAYS PVT. LTD.<br />
+                        BUILDING NO. 1882,<br />
+                        NEAR LIBRARY,<br />
+                        PAI, DISTRICT KAITHAL,<br />
+                        HARYANA - 136043, INDIA
+                      </span>
+                      <span className="block text-[10px] text-[#F47B20] font-normal normal-case mt-1 font-semibold">
+                        📍 Open in Google Maps ↗
+                      </span>
+                    </a>
                   </div>
                 </div>
 

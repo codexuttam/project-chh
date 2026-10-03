@@ -7,6 +7,7 @@ export const company = {
   instagramUrl: "https://www.instagram.com/vayuindiaroadways/",
   address: "Building No. 1882, Near Library, Pai, District Kaithal, Haryana - 136043",
   location: "Pai, Kaithal, Haryana, India",
+  mapsUrl: "https://www.google.com/maps/search/?api=1&query=Building+No.+1882+Near+Library+Pai+District+Kaithal+Haryana+136043",
   primaryColor: "#0B2A6F", // Deep Navy Blue
   secondaryColor: "#1455C0", // Royal Blue
   accentOrange: "#F47B20", // Accent Orange

@@ -96,12 +96,18 @@ export default function Footer() {
             <ul className="space-y-4 text-sm">
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-[#F47B20] mt-0.5 flex-shrink-0" />
-                <span className="text-xs leading-relaxed text-gray-400">
+                <a
+                  href={company.mapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs leading-relaxed text-gray-400 hover:text-white transition-colors"
+                  title="Open location in Google Maps"
+                >
                   Building No. 1882,<br />
                   Near Library, Pai,<br />
                   District Kaithal,<br />
-                  Haryana - 136043, India
-                </span>
+                  Haryana - 136043, India ↗
+                </a>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-4 h-4 text-[#F47B20] flex-shrink-0" />

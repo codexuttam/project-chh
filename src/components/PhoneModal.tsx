@@ -87,7 +87,16 @@ export default function PhoneModal({ isOpen, onClose, onOpenQuoteModal }: PhoneM
             Direct Dispatch Operations
           </h3>
           <p className="text-xs text-gray-500 mt-1 leading-relaxed">
-            Vayu India Roadways Pvt. Ltd. • Registered Office Pai, Kaithal, HR
+            Vayu India Roadways Pvt. Ltd. •{" "}
+            <a
+              href={company.mapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#1455C0] hover:underline font-medium"
+              title="Open location in Google Maps"
+            >
+              Registered Office Pai, Kaithal, HR ↗
+            </a>
           </p>
 
           {/* Featured Phone Card */}

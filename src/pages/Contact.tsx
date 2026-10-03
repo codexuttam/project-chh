@@ -62,18 +62,29 @@ export default function Contact() {
                 {/* Registered Address */}
                 <div className="flex gap-4">
                   <div className="w-10 h-10 bg-[#0B2A6F]/5 text-[#0B2A6F] rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                    <MapPin className="w-5 h-5" />
+                    <MapPin className="w-5 h-5 text-[#F47B20]" />
                   </div>
                   <div>
                     <h3 className="text-xs font-extrabold uppercase text-gray-400 tracking-wider mb-1">
                       Registered Office Address
                     </h3>
-                    <p className="text-sm font-bold text-[#172033] leading-relaxed uppercase">
-                      VAYU INDIA ROADWAYS PVT. LTD.<br />
-                      BUILDING NO. 1882,<br />
-                      NEAR LIBRARY, PAI,<br />
-                      DISTRICT KAITHAL, HARYANA - 136043
-                    </p>
+                    <a
+                      href={company.mapsUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group block text-sm font-bold text-[#172033] hover:text-[#1455C0] leading-relaxed uppercase transition-colors"
+                      title="Open location in Google Maps"
+                    >
+                      <span className="group-hover:underline">
+                        VAYU INDIA ROADWAYS PVT. LTD.<br />
+                        BUILDING NO. 1882,<br />
+                        NEAR LIBRARY, PAI,<br />
+                        DISTRICT KAITHAL, HARYANA - 136043
+                      </span>
+                      <span className="block text-[10px] text-[#F47B20] font-normal normal-case mt-1 font-semibold">
+                        📍 View on Google Maps ↗
+                      </span>
+                    </a>
                   </div>
                 </div>
 
