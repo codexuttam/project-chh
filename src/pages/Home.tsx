@@ -23,11 +23,14 @@ import {
   ThumbsUp
 } from "lucide-react";
 
+import { usePhoneModal } from "../context/PhoneModalContext";
+
 interface HomeProps {
   onQuoteClick: () => void;
 }
 
 export default function Home({ onQuoteClick }: HomeProps) {
+  const { openPhoneModal } = usePhoneModal();
   // Map icons to services
   const getServiceIcon = (iconName: string) => {
     switch (iconName) {
@@ -651,13 +654,13 @@ export default function Home({ onQuoteClick }: HomeProps) {
             >
               Get A Quote
             </button>
-            <a
-              href={`tel:${company.phone.replace(/\s+/g, "")}`}
-              className="w-full sm:w-auto bg-transparent border-2 border-white/40 hover:border-white text-white font-bold text-xs uppercase tracking-widest py-3.5 px-8 rounded-lg transition-all flex items-center justify-center gap-2"
+            <button
+              onClick={openPhoneModal}
+              className="w-full sm:w-auto bg-transparent border-2 border-white/40 hover:border-white text-white font-bold text-xs uppercase tracking-widest py-3.5 px-8 rounded-lg transition-all flex items-center justify-center gap-2 cursor-pointer"
             >
               <Phone className="w-4 h-4 text-[#F47B20]" />
               <span>Call Now: {company.phone}</span>
-            </a>
+            </button>
           </div>
         </div>
       </section>

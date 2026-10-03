@@ -16,11 +16,14 @@ import {
   ArrowRight
 } from "lucide-react";
 
+import { usePhoneModal } from "../context/PhoneModalContext";
+
 interface ServicesProps {
   onQuoteClick?: () => void;
 }
 
 export default function Services({ onQuoteClick }: ServicesProps) {
+  const { openPhoneModal } = usePhoneModal();
   const getServiceIcon = (iconName: string) => {
     switch (iconName) {
       case "Truck":
@@ -166,13 +169,13 @@ export default function Services({ onQuoteClick }: ServicesProps) {
             Our dispatch managers analyze weight, load dimensions, loading docks, and permit requirements to deliver safe and cost-effective road transport solutions across India.
           </p>
           <div className="pt-2">
-            <a
-              href={`tel:${company.phone.replace(/\s+/g, "")}`}
-              className="inline-flex items-center gap-2 bg-[#F47B20] hover:bg-[#E25C00] text-white font-black text-xs uppercase tracking-widest py-3.5 px-8 rounded-lg shadow-lg transition-transform hover:scale-105"
+            <button
+              onClick={openPhoneModal}
+              className="inline-flex items-center gap-2 bg-[#F47B20] hover:bg-[#E25C00] text-white font-black text-xs uppercase tracking-widest py-3.5 px-8 rounded-lg shadow-lg transition-transform hover:scale-105 cursor-pointer"
             >
               <PhoneCall className="w-4 h-4" />
               Call Dispatch Desk: {company.phone}
-            </a>
+            </button>
           </div>
         </div>
       </section>

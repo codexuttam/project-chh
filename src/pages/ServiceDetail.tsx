@@ -16,12 +16,15 @@ import {
   AlertCircle
 } from "lucide-react";
 
+import { usePhoneModal } from "../context/PhoneModalContext";
+
 interface ServiceDetailProps {
   onQuoteClick: () => void;
 }
 
 export default function ServiceDetail({ onQuoteClick }: ServiceDetailProps) {
   const { path } = useRouter();
+  const { openPhoneModal } = usePhoneModal();
 
   // Find the service matching the pathname
   const service = services.find((s) => s.path === path);
@@ -185,13 +188,13 @@ export default function ServiceDetail({ onQuoteClick }: ServiceDetailProps) {
                   >
                     Get A Quote
                   </button>
-                  <a
-                    href={`tel:${company.phone.replace(/\s+/g, "")}`}
-                    className="w-full bg-white/10 hover:bg-white/15 text-white font-bold text-xs uppercase tracking-widest py-3 px-6 rounded transition-all inline-flex items-center justify-center gap-2"
+                  <button
+                    onClick={openPhoneModal}
+                    className="w-full bg-white/10 hover:bg-white/15 text-white font-bold text-xs uppercase tracking-widest py-3 px-6 rounded transition-all inline-flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <Phone className="w-4 h-4 text-[#F47B20]" />
                     <span>Call operations</span>
-                  </a>
+                  </button>
                 </div>
                 <div className="text-[10px] text-white/50 border-t border-white/10 pt-4">
                   For immediate vehicle placement inquiries, please dial directly.
