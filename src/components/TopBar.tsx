@@ -4,7 +4,7 @@ import { company } from "../data/company";
 import { usePhoneModal } from "../context/PhoneModalContext";
 
 export default function TopBar() {
-  const { openPhoneModal } = usePhoneModal();
+  const { openPhoneModal, openEmailModal } = usePhoneModal();
 
   return (
     <div className="bg-[#0B2A6F] text-white text-xs border-b border-white/10 py-2.5 px-4 sm:px-6 lg:px-8 hidden sm:block">
@@ -19,14 +19,14 @@ export default function TopBar() {
             <Phone className="w-3.5 h-3.5 text-[#F47B20]" />
             <span className="font-semibold tracking-wider">{company.phone}</span>
           </button>
-          <a
-            href={`mailto:${company.email}`}
-            className="flex items-center gap-2 hover:text-[#F47B20] transition-colors focus:outline-none focus:ring-1 focus:ring-[#F47B20] rounded px-1"
+          <button
+            onClick={openEmailModal}
+            className="flex items-center gap-2 hover:text-[#F47B20] transition-colors focus:outline-none focus:ring-1 focus:ring-[#F47B20] rounded px-1 cursor-pointer"
             aria-label={`Email us at ${company.email}`}
           >
             <Mail className="w-3.5 h-3.5 text-[#F47B20]" />
             <span className="font-semibold lowercase tracking-wider">{company.email}</span>
-          </a>
+          </button>
           <a
             href={company.instagramUrl}
             target="_blank"

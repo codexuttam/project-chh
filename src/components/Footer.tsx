@@ -7,7 +7,7 @@ import { usePhoneModal } from "../context/PhoneModalContext";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
-  const { openPhoneModal } = usePhoneModal();
+  const { openPhoneModal, openEmailModal } = usePhoneModal();
 
   return (
     <footer className="bg-[#172033] text-gray-300 border-t-4 border-[#F47B20]">
@@ -111,9 +111,9 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-4 h-4 text-[#F47B20] flex-shrink-0" />
-                <a href={`mailto:${company.email}`} className="hover:text-white transition-colors lowercase text-xs">
+                <button onClick={openEmailModal} className="hover:text-white transition-colors lowercase text-xs cursor-pointer text-left">
                   {company.email}
-                </a>
+                </button>
               </li>
               <li className="flex items-center gap-3">
                 <Instagram className="w-4 h-4 text-[#F47B20] flex-shrink-0" />

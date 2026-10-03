@@ -2,8 +2,10 @@ import React from "react";
 import { company } from "../data/company";
 import { fleetImages, getImageUrl, siteImages } from "../data/images";
 import { MapPin, Phone, Mail, ShieldCheck, Truck, Clock, Compass, Navigation } from "lucide-react";
+import { usePhoneModal } from "../context/PhoneModalContext";
 
 export default function Network() {
+  const { openPhoneModal, openEmailModal } = usePhoneModal();
   return (
     <div className="bg-white min-h-screen">
       {/* --------------------------------------------------------
@@ -70,9 +72,9 @@ export default function Network() {
                   <Phone className="w-5 h-5 text-[#1455C0] flex-shrink-0" />
                   <div>
                     <h3 className="text-xs font-black uppercase text-gray-400 tracking-widest mb-1">Direct Dispatch Desk</h3>
-                    <a href={`tel:${company.phone.replace(/\s+/g, "")}`} className="text-sm font-extrabold text-[#0B2A6F] hover:text-[#1455C0] transition-colors">
+                    <button onClick={openPhoneModal} className="text-sm font-extrabold text-[#0B2A6F] hover:text-[#1455C0] transition-colors cursor-pointer text-left">
                       {company.phone}
-                    </a>
+                    </button>
                   </div>
                 </div>
 
@@ -80,9 +82,9 @@ export default function Network() {
                   <Mail className="w-5 h-5 text-[#1455C0] flex-shrink-0" />
                   <div>
                     <h3 className="text-xs font-black uppercase text-gray-400 tracking-widest mb-1">Corporate Communications</h3>
-                    <a href={`mailto:${company.email}`} className="text-sm font-extrabold text-[#0B2A6F] hover:text-[#1455C0] transition-colors lowercase">
+                    <button onClick={openEmailModal} className="text-sm font-extrabold text-[#0B2A6F] hover:text-[#1455C0] transition-colors lowercase cursor-pointer text-left">
                       {company.email}
-                    </a>
+                    </button>
                   </div>
                 </div>
               </div>

@@ -6,7 +6,7 @@ import { fleetImages, getImageUrl } from "../data/images";
 import { usePhoneModal } from "../context/PhoneModalContext";
 
 export default function Contact() {
-  const { openPhoneModal } = usePhoneModal();
+  const { openPhoneModal, openEmailModal } = usePhoneModal();
   return (
     <div className="bg-white min-h-screen">
       {/* --------------------------------------------------------
@@ -105,12 +105,12 @@ export default function Contact() {
                     <h3 className="text-xs font-extrabold uppercase text-gray-400 tracking-wider mb-1">
                       Corporate Communications
                     </h3>
-                    <a
-                      href={`mailto:${company.email}`}
-                      className="text-sm font-bold text-[#0B2A6F] hover:text-[#1455C0] transition-colors lowercase"
+                    <button
+                      onClick={openEmailModal}
+                      className="text-sm font-bold text-[#0B2A6F] hover:text-[#1455C0] transition-colors lowercase text-left cursor-pointer"
                     >
                       {company.email}
-                    </a>
+                    </button>
                   </div>
                 </div>
 
