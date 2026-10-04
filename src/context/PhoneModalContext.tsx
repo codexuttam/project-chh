@@ -1,12 +1,15 @@
 import React, { createContext, useContext, useState } from "react";
 import PhoneModal from "../components/PhoneModal";
 import GetQuoteModal from "../components/GetQuoteModal";
+import EmailModal from "../components/EmailModal";
 
 interface PhoneModalContextType {
   openPhoneModal: () => void;
   closePhoneModal: () => void;
   openQuoteModal: () => void;
   closeQuoteModal: () => void;
+  openEmailModal: () => void;
+  closeEmailModal: () => void;
 }
 
 const PhoneModalContext = createContext<PhoneModalContextType | undefined>(undefined);
@@ -14,6 +17,7 @@ const PhoneModalContext = createContext<PhoneModalContextType | undefined>(undef
 export const PhoneModalProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isPhoneOpen, setIsPhoneOpen] = useState(false);
   const [isQuoteOpen, setIsQuoteOpen] = useState(false);
+  const [isEmailOpen, setIsEmailOpen] = useState(false);
 
   return (
     <PhoneModalContext.Provider
@@ -21,7 +25,9 @@ export const PhoneModalProvider: React.FC<{ children: React.ReactNode }> = ({ ch
         openPhoneModal: () => setIsPhoneOpen(true),
         closePhoneModal: () => setIsPhoneOpen(false),
         openQuoteModal: () => setIsQuoteOpen(true),
-        closeQuoteModal: () => setIsQuoteOpen(false)
+        closeQuoteModal: () => setIsQuoteOpen(false),
+        openEmailModal: () => setIsEmailOpen(true),
+        closeEmailModal: () => setIsEmailOpen(false)
       }}
     >
       {children}
@@ -33,6 +39,10 @@ export const PhoneModalProvider: React.FC<{ children: React.ReactNode }> = ({ ch
       <GetQuoteModal
         isOpen={isQuoteOpen}
         onClose={() => setIsQuoteOpen(false)}
+      />
+      <EmailModal
+        isOpen={isEmailOpen}
+        onClose={() => setIsEmailOpen(false)}
       />
     </PhoneModalContext.Provider>
   );
