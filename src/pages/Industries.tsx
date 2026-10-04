@@ -1,7 +1,8 @@
 import React from "react";
 import { company, industries } from "../data/company";
 import { fleetImages, getImageUrl } from "../data/images";
-import { ShieldAlert, CheckCircle, Package, Settings, HardHat } from "lucide-react";
+import { CheckCircle, Package } from "lucide-react";
+import ClientsSection from "../components/ClientsSection";
 
 export default function Industries() {
   return (
@@ -81,22 +82,9 @@ export default function Industries() {
       </section>
 
       {/* --------------------------------------------------------
-          CLIENTS POLICY BLOCK
+          OUR CLIENTS
           -------------------------------------------------------- */}
-      <section className="py-16 bg-[#F5F7FA] border-t border-gray-200">
-        <div className="max-w-4xl mx-auto px-4 text-center space-y-4">
-          <div className="inline-flex items-center justify-center p-3 bg-amber-50 rounded-full border border-amber-200 text-[#F47B20]">
-            <ShieldAlert className="w-6 h-6" />
-          </div>
-          <h3 className="text-sm font-bold text-[#172033] uppercase tracking-widest">Enterprise Customer Confidentiality</h3>
-          <p className="text-xs text-gray-500 leading-relaxed max-w-2xl mx-auto">
-            Vayu India Roadways Pvt. Ltd. respects the cargo and supply chain privacy of our commercial accounts. To remain compliant with logistics contracts and corporate agreements, we do not publicly display specific customer corporate logos or proprietary brand registries.
-          </p>
-          <p className="text-xs text-gray-400 italic font-medium">
-            Verified institutional buyers requesting credentials or safety record summaries may consult our Pai desk privately.
-          </p>
-        </div>
-      </section>
+      <ClientsSection className="bg-[#F5F7FA]" />
     </div>
   );
 }

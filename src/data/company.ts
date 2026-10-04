@@ -257,3 +257,19 @@ export const industries = [
   { name: "Industrial Equipment", desc: "Dispatching machine tools, pumps, and fabrication units." },
   { name: "General Cargo", desc: "Versatile, day-to-day transport of mixed commercial merchandise." }
 ];
+
+// Clients displayed in the "Our Clients" section (Home & Industries pages).
+export const clients: string[] = [
+  "Nehal Steels Pvt. Ltd.",
+  "Force Motors Ltd.",
+  "Exide Industries Ltd.",
+  "Mahendra Forging Ltd.",
+  "Thermax Ltd.",
+  "Purushotam Profiles Pvt. Ltd.",
+  "Flotex Solar Pvt. Ltd.",
+  "Cantone Industries Pvt. Ltd.",
+  "Peekay Steel Castings Pvt. Ltd.",
+  "Airpro Engineers Pvt. Ltd.",
+  "Engineering Supply Agencies",
+  "Allied Aero Systems Pvt. Ltd."
+];

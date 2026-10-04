@@ -3,6 +3,7 @@ import { company, stats, services, industries } from "../data/company";
 import { fleetImages, getImageUrl, siteImages } from "../data/images";
 import { Link } from "../components/Router";
 import AnimatedCounter from "../components/AnimatedCounter";
+import ClientsSection from "../components/ClientsSection";
 import {
   Shield,
   Clock,
@@ -292,6 +293,12 @@ export default function Home({ onQuoteClick }: HomeProps) {
           </div>
         </div>
       </section>
+
+
+      {/* --------------------------------------------------------
+          OUR CLIENTS
+          -------------------------------------------------------- */}
+      <ClientsSection />
 
 
       {/* --------------------------------------------------------
